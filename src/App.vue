@@ -4,7 +4,7 @@
 
 <template>
   <header>
-    <van-button type="primary">按钮</van-button>
+    <RouterView />
   </header>
 </template>
 
