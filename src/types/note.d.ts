@@ -1,8 +1,7 @@
 export interface Note {
-    _id?: string;
     content: string;
-    createTime: string;
-    updateTime: string;
+    date: string;
+    _v?: number;
 };
 
-export type NoteList = Array<Note>;
+export type NoteList = Note[];

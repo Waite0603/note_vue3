@@ -1,13 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vite App</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+  <script>
+    //=>根据当前设备的宽度,动态计算出REM的换算比例,实现页面中元素的等比缩放
+    /* 
+      这段代码是一个自执行的匿名函数，用于根据当前设备宽度计算 REM 换算比例，实现页面元素的
+      等比缩放。该函数首先定义了一个 computedREM 函数，用于计算 REM 换算比例。然后，它将 winW 
+      变量设置为当前设备宽度，将 desW 变量设置为 375。如果设备宽度大于等于 375，则将根元素的字
+      体大小设置为 100px 并返回。否则，它通过将设备宽度除以 375 并将结果乘以 100 来计算 REM 换
+      算比例。最后，它将根元素的字体大小设置为计算出的值。
+    */
+    ~(function anonymous(window) {
+      let computedREM = function computedREM() {
+        let winW = document.documentElement.clientWidth,
+          desW = 375;
+        if (winW >= 375) {
+          document.documentElement.style.fontSize = "100px";
+          return;
+        }
+        document.documentElement.style.fontSize = (winW / desW) * 100 + "px";
+      };
+      computedREM();
+      window.addEventListener("resize", computedREM);
+    })(window);
+  </script>
+</body>
+
 </html>

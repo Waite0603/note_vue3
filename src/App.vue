@@ -3,9 +3,9 @@
 </script>
 
 <template>
-  <header>
+  <div class="box">
     <RouterView />
-  </header>
+  </div>
 </template>
 
 <style scoped>
